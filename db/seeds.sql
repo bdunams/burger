@@ -3,7 +3,7 @@ INSERT INTO `burgers` (
   `devoured`
 )
 VALUES
-('Big Mac', 'false'),
-('Whopper', 'false'),
-('Baconator', 'false'),
-('Roman Burger', 'false');
+('Big Mac', false),
+('Whopper', false),
+('Baconator', false),
+('Roman Burger', false);
