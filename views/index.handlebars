@@ -1,25 +1,27 @@
+<img id="burger-gif" src="https://media.giphy.com/media/3ohzdTiMfES1DhtJrW/giphy.gif">
+
 <h1>Eat The Burger</h1>
 
-<div class="row">
-  <div id="fresh" class="text-left">
+<div class="row align-center" id="burger-container">
+  <div id="fresh" class="col-md-offset-1 col-md-4">
     {{#each burger}}
       {{#unless this.devoured}}
           <div class="burger-div">
-            {{this.id}}. {{this.burger_name}}
-    
+  
+            <form class="inline-form" action="/?_method=PUT" method="POST">
+              <div class="form-group">
+                <label class="burger-label" for="burger-id">{{this.id}}. {{this.burger_name}}</label>
+                <input type="hidden" id="burger-id" name="id" value="{{this.id}}"/>
+                <button class="btn btn-success" type="submit">Devour it!</button>
+              </div>
+            </form>
           </div>
-          <form action="/?_method=PUT" method="POST">
-            <div class="inline-form">
-              <input type="hidden" name="id" value="{{this.id}}"/>
-              <button class="btn" type="submit">Devour it!</button>
-            </div>
-          </form>
 
       {{/unless}}
     {{/each}}
   </div>
 
-  <div id="devoured" class="text-right">
+  <div id="devoured"  class="col-md-offset-1 col-md-4">
     {{#each burger}}
       {{#if this.devoured}}
   
@@ -35,20 +37,9 @@
 <div class="row">
   <h2>Add a Burger</h2>
   <form class="form" method="POST" action="/">
-    <div class="inline-form">
-      <textarea type="text" name="burger_name"></textarea>
-      <button class="btn" type="submit">Add A Burger!</button>
+    <div class="form group">
+      <textarea type="text" name="burger_name" ></textarea>
     </div>
+      <button class="btn btn-primary" type="submit">Add A Burger!</button>
   </form>
 </div>
-
-<!--
-<h2>Update a Burger</h2>
-<form action="/?_method=PUT" method="POST" class="button-size">
-  <div class="form-group">
-    <input type="text" name="id" placeholder="id">
-    <textarea type="text" name="movie" placeholder="What burger would you like to update"></textarea>
-    <button type="submit">Eat A Burger</button>
-  </div>
-</form>
--->

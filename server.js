@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8080;
 app.use(express.static(__dirname + "/public"));
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
-// Override with POST having ?_method=DELETE
+// Override with POST having ?_method=PUT
 app.use(methodOverride("_method"));
 
 let exphbs = require("express-handlebars");
