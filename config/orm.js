@@ -3,8 +3,8 @@ const connection = require('./connection').burgersDB;
 
 let tableName = "burgers";
 
-let orm {
-  
+let orm = {
+  // Get all burgers from DB
   selectAll: function(callback){
     
     let s = 'SELECT * FROM ' + tableName;
@@ -15,25 +15,27 @@ let orm {
 
     });
   },
-  
-  insertOne: function(burger, callback){
+  // Add new burger to db
+  insertOne: function(burgerName, callback){
     // Query 
-    let s = "INSERT INTO " + tableName + " (name, devoured) VALUES (?,?)";
+    let s = "INSERT INTO " + tableName + " (burger_name, devoured) VALUES (?,?)";
     // Default value of false 
-    burger.devoured = burger.devoured || false;
+    let burgerDevoured = false;
     
-    connection.query(s, [burger.name, burger.devoured], function(err, result) {
-
+    connection.query(s, [burgerName, burgerDevoured], function(err, result) {
+      if(err) console.log(err);
+      
       callback(result);
 
     });
   },
-  
-  updateOne: function(name, id, callback){
+  // Update a burger
+  updateOne: function(burgerId, callback){
     
-    let s = "UPDATE " + tableName + " SET devoured=? WHERE id=?";
+    let s = "UPDATE " + tableName + " SET devoured=1 WHERE id=?";
 
-    connection.query(s, [name, id], function(err, result) {
+    connection.query(s, [burgerId], function(err, result) {
+      if(err) console.log(err);
 
       callback(result);
 

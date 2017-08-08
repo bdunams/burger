@@ -11,13 +11,13 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-    burger.add(req.body.burger, function(){
+    burger.add(req.body.burger_name, function(){
       return res.redirect("/");
     })
 });
 
 router.put("/", function(req, res) {
-  burger.update(req.body.burger, req.body.id, function(){
+  burger.update(req.body.id, function(){
     return res.redirect("/");
   })
 });

@@ -1,31 +1,54 @@
-<h1>Burgers</h1>
+<h1>Eat The Burger</h1>
 
-<ul>
-  {{#each burger}}
-    <li>
-      <p>
-        {{this.id}}. {{this.movie}}
+<div class="row">
+  <div id="fresh" class="text-left">
+    {{#each burger}}
+      {{#unless this.devoured}}
+          <div class="burger-div">
+            {{this.id}}. {{this.burger_name}}
+    
+          </div>
+          <form action="/?_method=PUT" method="POST">
+            <div class="inline-form">
+              <input type="hidden" name="id" value="{{this.id}}"/>
+              <button class="btn" type="submit">Devour it!</button>
+            </div>
+          </form>
+
+      {{/unless}}
+    {{/each}}
+  </div>
+
+  <div id="devoured" class="text-right">
+    {{#each burger}}
+      {{#if this.devoured}}
+  
+          <div  class="burger-div">
+            {{this.id}}. {{this.burger_name}}
+          </div>
+
+      {{/if}}
+    {{/each}}
+  </div>
+</div>
+
+<div class="row">
+  <h2>Add a Burger</h2>
+  <form class="form" method="POST" action="/">
+    <div class="inline-form">
+      <textarea type="text" name="burger_name"></textarea>
+      <button class="btn" type="submit">Add A Burger!</button>
+    </div>
+  </form>
+</div>
 
 <!--
-        <form action="/{{this.id}}?_method=DELETE" method="POST">
-          <input type="hidden" name="id" value="{{this.id}}">
-          <button type="submit">Delete</button>
-        </form>
--->
-      </p>
-    </li>
-  {{/each}}
-</ul>
-
-<h2>Add a Burger</h2>
-<form method="POST" action="/" class="button-size">
-	<textarea type="text" name="movie"></textarea>
-	<button type="submit">Save Movie!</button>
-</form>
-
 <h2>Update a Burger</h2>
 <form action="/?_method=PUT" method="POST" class="button-size">
-  <input type="text" name="id" placeholder="id">
-	<textarea type="text" name="movie" placeholder="what do you want to update this movie title to?"></textarea>
-	<button type="submit">Update Movie!</button>
+  <div class="form-group">
+    <input type="text" name="id" placeholder="id">
+    <textarea type="text" name="movie" placeholder="What burger would you like to update"></textarea>
+    <button type="submit">Eat A Burger</button>
+  </div>
 </form>
+-->

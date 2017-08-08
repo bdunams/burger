@@ -1,9 +1,9 @@
 // Database Connections
-const Promises = require('bluebird');
+//const Promises = require('bluebird');
 const MySQL = require('mysql');
 
-Promises.promisifyAll(require("mysql/lib/Connection").prototype);
-Promises.promisifyAll(require("mysql/lib/Pool").prototype);
+//Promises.promisifyAll(require("mysql/lib/Connection").prototype);
+//Promises.promisifyAll(require("mysql/lib/Pool").prototype);
 
 let burgers = MySQL.createConnection({
 	host: "localhost",

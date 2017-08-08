@@ -1,16 +1,16 @@
 // BURGER MODEL
 var orm = require("../config/orm.js");
 
-let movies = {
+let burger = {
 	show : function(callback){
       orm.selectAll(callback);
 	},
-	add : function(burger, callback){
-      orm.insertOne(burger, callback);
+	add : function(burgerName, callback){
+      orm.insertOne(burgerName, callback);
 	},
-	update : function(name, id, callback){
-      orm.updateOne(name, id, callback);
+	update : function(burgerId, callback){
+      orm.updateOne(burgerId, callback);
 	}
 };
 
-module.exports = movies;
+module.exports = burger;
